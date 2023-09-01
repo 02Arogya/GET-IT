@@ -1,0 +1,98 @@
+{% extends 'layout.html' %}
+
+{% block title %} {% endblock %}
+
+{% block body %}
+{% include '_msg.html' %}
+
+<div class="container">
+  <div class="col-md-2">
+  </div>
+  <div class="col-md-8">
+    <h1 class="text-center bg-info p-2">Add Product</h1>
+    
+      <form class="form" method="post" enctype="multipart/form-data" action="/Update">
+                    
+      </form>
+      <div class="container">
+          <div class="row">
+            <div class="col-md-4"> </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+          </div>
+
+      </div>
+   
+        <div class="col-md-5">
+          <div class="card">
+            <div class="card-type">
+              <form class="form" enctype="multipart/form-data" method="post" action="/Update">
+                <span label for="text">Category</span>
+                
+                <select> 
+                  {% for Category in Category %}
+                  <option value="">Choose </option>
+                <option value="{{Category.id}}" > {{Category.Category}} </option>
+                {% endfor %}
+                </select>
+
+              
+                <br>
+                <label>Product ID</label>
+                <input type="text" class="form-control" name="Name" required><br>
+                <label>Name</label>
+                <input type="text" class="form-control" name="Prod_name"required><br>
+                <label>Cost per kg</label>
+                <input type="Integer" class="form-control" name="Prod_Cost" required><br>
+                x
+                <label>Product Image</label>
+                <input type="file" class="form-control" name="file" id ="file" accept=" image/png, image/jpeg " required><br>
+                <button type="submit" class="btn btn-info mt-2">Add</button><br>
+              </form>
+             
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2"></div>
+      </div> 
+      <br><br><br>
+  <div class ="container col-md-8">
+    <div class="col-md-12">
+      <h1 class="text-center bg-info p-2">Products</h1>
+    </div>  
+    
+    <table border="1px" color=" dark">
+      
+      <tr>
+        <td><span>Category</span></td>
+        <td>Product Id</td>
+        <td>Product Name</td>
+        <td>Cost</td>
+        <td>Image </td>
+        <td>  </td>
+        
+      </tr>
+      {% for prod in prod %}  
+      <tr>
+        
+        <td> Vegetable {{Category.Category}} </td>
+        <td>{{ prod.Prod_id }}</td>
+        <td>{{ prod.Prod_name }}</td>
+        <td>{{ prod.Prod_Cost}}</td>
+        <td><img src="/static/product{{ prod.Prod_id }}.JPG" class="card-img-top" alt="..." width="20px"></td>
+        <td><a href="/{{ prod.Prod_id }}/Edit" class="btn btn-info mt-2" >Edit</button></td>
+        <td><a href="/{{ prod.Prod_id }}/delete" class="btn btn-info mt-2" >Delete</a></td>
+      </tr>
+      {% endfor %}
+      
+
+
+
+
+    </table>
+  </div>
+    <a href = "{{url_for('Register')}}">Don't have a Account ? Register Here</a>
+    
+    {% endblock %}
+
+<!--{ render_field(form.image, class="form-control")}}>

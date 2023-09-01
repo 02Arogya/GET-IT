@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block title %} {% endblock %}
+
+{% block body %} 
+
+hi
+<div class="row">
+    {% for prod in prod %}
+    
+
+		<div class="col-sm">
+	        <div class="card">
+			  	<img src="/static/product{{ prod.Prod_id }}.JPG" class="card-img-top" alt="..." width="20px">
+			  	<div class="card-body">
+					<div>
+					<b>
+					{{ prod.Prod_name }} <br>
+                    Price {{ prod.Prod_Cost}}/kg
+					</b>
+					</div>					    
+				    <p class="card-text"></p>
+					<div id="addToCart">
+						<a href="/addToCart/{{prod.Prod_id}}">Add to cart</a>
+					</div>
+        		</div>
+			</div>
+		</div>
+
+	
+            
+
+
+    {% endfor %}
+</div>
+{% endblock %}
