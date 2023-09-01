@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block title %} {% endblock %}
+
+{% block body %}
+
+
+This is a Login Page
+
+      
+     
+
+
+  <form class="px-4 py-3" method="POST" action="">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+      <label for="exampleDropdownFormEmail1">Email address</label>
+      {{ form.username }}
+    </div>
+    <div class="form-group">
+        <label for="exampleDropdownFormPassword1">Password</label> 
+        {{ form.password }}
+    </div>
+        
+        {{ form.submit }}
+   </form>
+    <a href = "{{url_for('Register')}}">Don't have a Account ? Register Here</a>
+
+{% endblock %}
